@@ -7,10 +7,6 @@
 <style>
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    /* Latar belakang bertema One Piece dengan efek gradient gelap agar teks tetap terbaca */
-    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), 
-                url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1920') no-repeat center center fixed;
-    background-size: cover;
     color: #f3f4f6;
     margin: 0;
     padding: 20px;
@@ -18,7 +14,32 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow-y: auto;
+    position: relative;
 }
+
+/* Latar Belakang Video Bergerak Luffy */
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Overlay Gelap agar Teks Tetap Terbaca Jelas */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85));
+    z-index: -1;
+}
+
 .container {
     background: rgba(15, 15, 22, 0.88);
     backdrop-filter: blur(15px);
@@ -30,6 +51,8 @@ body {
     max-width: 950px;
     padding: 30px;
     box-sizing: border-box;
+    z-index: 1; /* Memastikan kontainer berada di atas video */
+    margin: 20px 0;
 }
 h1 {
     text-align: center;
@@ -143,6 +166,12 @@ tr:nth-child(even) { background-color: rgba(0, 170, 255, 0.02); }
 </style>
 </head>
 <body>
+
+    <video autoplay muted loop playsinline class="video-bg">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-waving-flag-of-one-piece-33290-500.mp4" type="video/mp4">
+        <style>body { background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1920') no-repeat center center fixed; background-size: cover; }</style>
+    </video>
+    <div class="overlay"></div>
 
 <div class="container">
     <h1>Rumus Flop</h1>
