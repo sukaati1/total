@@ -87,29 +87,29 @@
             letter-spacing: 1.2px;
         }
         .btn-submit { 
-            background: linear-gradient(135deg, #ff4500, #ff6600); 
+            background: linear-gradient(135deg, #22c55e, #16a34a); /* Hijau Kukus */
             color: #fff; 
         }
         .btn-submit:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 6px 15px rgba(255, 69, 0, 0.45); 
+            box-shadow: 0 6px 15px rgba(34, 197, 94, 0.45); 
         }
         .btn-copy { 
-            background: linear-gradient(135deg, #1e40af, #3b82f6); 
+            background: linear-gradient(135deg, #0284c7, #0ea5e9); /* Biru Langit */
             color: #fff; 
         }
         .btn-copy:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.45); 
+            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.45); 
         }
         .btn-reset { 
-            background: rgba(255, 255, 255, 0.08); 
-            color: #d1d5db; 
+            background: linear-gradient(135deg, #dc2626, #991b1b); /* Merah Darah */
+            color: #fff; 
             border: 1px solid rgba(255, 255, 255, 0.15); 
         }
         .btn-reset:hover { 
-            background: rgba(255, 255, 255, 0.18); 
-            color: #fff; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.45);
         }
         button:active {
             transform: translateY(1px);
@@ -152,82 +152,4 @@
     <div class="btn-group">
         <button class="btn-submit" onclick="konversiLog()">Submit</button>
         <button class="btn-copy" onclick="salinHasil()">Salin Data</button>
-        <button class="btn-reset" onclick="resetData()">Reset</button>
-    </div>
-
-    <label>Hasil Konversi:</label>
-    <div class="table-container">
-        <table id="resultTable">
-            <thead>
-                <tr>
-                    <th>WAKTU</th>
-                    <th>Used ID</th>
-                    <th>Tujuan Bank</th>
-                    <th>Credit</th>
-                    <th>Jumlah</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-        </table>
-    </div>
-</div>
-
-<script>
-    let hasilTeksUntukDisalin = "";
-
-    function konversiLog() {
-        const input = document.getElementById('rawInput').value.trim();
-        const tbody = document.getElementById('tableBody');
-        tbody.innerHTML = ''; 
-        hasilTeksUntukDisalin = ""; 
-
-        if (!input) {
-            alert('Silakan tempel log transaksi terlebih dahulu!');
-            return;
-        }
-
-        let baris = input.split('\n');
-        baris.reverse(); 
-
-        let barisDataDisalin = [];
-
-        baris.forEach(line => {
-            if (line.trim() === '') return;
-
-            const kolom = line.split(/\t| {2,}/);
-
-            if (kolom.length >= 7) {
-                const fullDateTime = kolom[1]; 
-                const waktu = fullDateTime.includes(' ') ? fullDateTime.split(' ')[1] : fullDateTime;
-                const userId = kolom[2];
-                const tujuanBank = kolom[4];
-                const creditStatus = ""; 
-                const jumlah = kolom[6]; 
-
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${waktu}</td><td>${userId}</td><td>${tujuanBank}</td><td>${creditStatus}</td><td>${jumlah}</td>`;
-                tbody.appendChild(tr);
-
-                barisDataDisalin.push(`${waktu}\t${userId}\t${tujuanBank}\t${creditStatus}\t${jumlah}`);
-            }
-        });
-
-        hasilTeksUntukDisalin = barisDataDisalin.join('\n');
-    }
-
-    function resetData() {
-        document.getElementById('rawInput').value = '';
-        document.getElementById('tableBody').innerHTML = '';
-        hasilTeksUntukDisalin = "";
-    }
-
-    function salinHasil() {
-        if (!hasilTeksUntukDisalin) {
-            alert('Belum ada data yang dikonversi untuk disalin!');
-            return;
-        }
-        navigator.clipboard.writeText(hasilTeksUntukDisalin);
-    }
-</script>
-</body>
-</html>
+        <button class="btn-reset" onclick="resetData()">Reset
