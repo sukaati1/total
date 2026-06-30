@@ -110,31 +110,37 @@ button {
     text-transform: uppercase;
     letter-spacing: 1.2px;
 }
+
+/* Tombol Submit - Hijau */
 .btn-submit {
-    background: linear-gradient(135deg, #0066ff, #00aaff);
+    background: linear-gradient(135deg, #10b981, #059669);
     color: #fff;
 }
 .btn-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 170, 255, 0.45);
+    box-shadow: 0 6px 15px rgba(16, 185, 129, 0.45);
 }
+
+/* Tombol Salin - Kuning */
 .btn-copy {
-    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    background: linear-gradient(135deg, #eab308, #ca8a04);
     color: #fff;
 }
 .btn-copy:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.45);
+    box-shadow: 0 6px 15px rgba(234, 179, 8, 0.45);
 }
+
+/* Tombol Reset - Merah */
 .btn-reset {
-    background: rgba(255, 255, 255, 0.08);
-    color: #d1d5db;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-.btn-reset:hover {
-    background: rgba(255, 255, 255, 0.18);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
     color: #fff;
 }
+.btn-reset:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.45);
+}
+
 button:active {
     transform: translateY(1px);
 }
@@ -235,33 +241,4 @@ function konversiLog() {
             const jumlah = kolom[6];
 
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${waktu}</td><td>${userId}</td><td>${tujuanBank}</td><td>${creditStatus}</td><td>${jumlah}</td>`;
-            tbody.appendChild(tr);
-
-            barisDataDisalin.push(`${waktu}\t${userId}\t${tujuanBank}\t${creditStatus}\t${jumlah}`);
-        }
-    });
-
-    if (barisDataDisalin.length === 0) {
-        alert('Format log tidak sesuai atau jumlah kolom kurang dari 7. Pastikan menggunakan tab/spasi ganda antar kolom.');
-    } else {
-        hasilTeksUntukDisalin = barisDataDisalin.join('\n');
-    }
-}
-
-function resetData() {
-    document.getElementById('rawInput').value = '';
-    document.getElementById('tableBody').innerHTML = '';
-    hasilTeksUntukDisalin = "";
-}
-
-function salinHasil() {
-    if (!hasilTeksUntukDisalin) {
-        alert('Belum ada data yang dikonversi untuk disalin!');
-        return;
-    }
-    navigator.clipboard.writeText(hasilTeksUntukDisalin);
-}
-</script>
-</body>
-</html>
+            tr.innerHTML = `<td>${waktu}</td><td>${userId}</td><td>${t
