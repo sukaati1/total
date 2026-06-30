@@ -192,10 +192,8 @@ let barisDataDisalin = [];
 baris.forEach(line => {
 if (line.trim() === '') return;
 
-// Memisahkan kolom berdasarkan tab atau spasi (minimal 2 spasi)
 const kolom = line.split(/\t| {2,}/);
 
-// Catatan: Pastikan log mentah memiliki setidaknya 7 kolom terpisah
 if (kolom.length >= 7) {
 const fullDateTime = kolom[1];
 const waktu = fullDateTime.includes(' ') ? fullDateTime.split(' ')[1] : fullDateTime;
@@ -230,11 +228,8 @@ if (!hasilTeksUntukDisalin) {
 alert('Belum ada data yang dikonversi untuk disalin!');
 return;
 }
-navigator.clipboard.writeText(hasilTeksUntukDisalin).then(() => {
-    alert('Data berhasil disalin ke clipboard!');
-}).catch(err => {
-    alert('Gagal menyalin data otomatis, izinkan akses clipboard atau salin manual.');
-});
+// Langsung menyalin data tanpa memunculkan pop-up/alert OK/sukses
+navigator.clipboard.writeText(hasilTeksUntukDisalin);
 }
 </script>
 </body>
